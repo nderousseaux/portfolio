@@ -1,0 +1,44 @@
+# Configuration ESLint & Prettier
+
+## ESLint
+
+Ce projet utilise ESLint avec la configuration Next.js par défaut.
+
+```bash
+pnpm lint          # Vérifier les erreurs
+pnpm lint --fix    # Corriger automatiquement
+```
+
+## Prettier (optionnel)
+
+Pour ajouter Prettier :
+
+```bash
+pnpm add -D prettier eslint-config-prettier
+```
+
+Créer `.prettierrc` :
+
+```json
+{
+  "semi": true,
+  "trailingComma": "es5",
+  "singleQuote": false,
+  "printWidth": 100,
+  "tabWidth": 2
+}
+```
+
+## VS Code
+
+Configuration recommandée (`.vscode/settings.json`) :
+
+```json
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
+}
+```
