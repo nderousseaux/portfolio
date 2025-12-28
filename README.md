@@ -16,33 +16,26 @@
 ## ℹ️ About
 This project is my personal portfolio website, built with Next.js App Router and Tailwind CSS. It showcases my skills, projects, and experience as a developer and sysadmin. The website is designed to be responsive, fast, and accessible, following best practices in web development.
 
-<!-- Put here a screenshot of the homepage  -->
-<!-- <p align="center">
-	<img src="docs/dashboard.png" alt="Dashboard" width="1000"/>
-</p> -->
+<p align="center">
+	<img src="docs/home.png" alt="Portfolio Homepage" width="1000"/>
+</p>
 
 <!-- ## ✨ Features -->
 
-
 <!-- ## 🚀 Tech Stack & Practices
-The purpose of this project is to implement the best practices of web app development : 
-- Nested routing
-- Server-side rendering (SSR)
-- Partial Pre-rendering
-- Dynamic rendering
-- Streaming
-- Responsive design
-- Loading skeleton
-- Images and fonts optimization
-- Authentication
-- Server-side form validation
-- Handling errors (404, 500)
-- Pagination
-- Search with URL parameters
-- Mutating data, with refreshing the cache
-- Accessibility
-- SEO optimization
-- Prepare to social sharing -->
+
+This project implements modern web development best practices:
+
+- **Next.js 15 App Router**: Latest routing and rendering capabilities
+- **TypeScript**: Type safety and better developer experience
+- **Tailwind CSS**: Utility-first CSS framework for rapid UI development
+- **Component Architecture**: Modular, reusable components
+- **Code Organization**: Clear separation of concerns (components, data, styles)
+- **Responsive Design**: Mobile-first approach with Tailwind breakpoints
+- **Images Optimization**: Next.js Image component for automatic optimization
+- **Accessibility**: Semantic HTML and proper ARIA labels
+- **SEO Optimization**: Meta tags and structured data for better search visibility
+- **Performance**: Static generation and optimized bundle size -->
 
 ## 🛠️ Getting started
 
@@ -67,4 +60,8 @@ Or simply push to the main branch, if you have the vercel integration enabled.
 
 > **Note:** Don't forget to set the environment variables in the vercel dashboard.
 
-## 📝 Future improvements
+<!-- ## 📝 Future improvements
+
+
+## 📂 Project Structure
+
