@@ -1,6 +1,8 @@
 import type { Viewport } from "next";
 import { metadata } from "@/../metadata";
 import "@/style/globals.css";
+import Nav from '@/components/Nav';
+import Footer from '@/components/Footer';
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -9,14 +11,6 @@ export const viewport: Viewport = {
 };
 
 export { metadata };
-
-// {/* "
-//       bg-black text-white font-mono 
-//       leading-6 tracking-tight
-//       sm:m-8 m-4
-//       text-md 2xl:text-lg
-//       flex justify-center
-//       "> */}
 
 export default function RootLayout({
   children,
@@ -31,33 +25,36 @@ children: React.ReactNode;
       text-white font-mono
 
       w-full
-      min-[1420px]:max-w-[1400px]
-      min-[1200px]:max-w-[1180px]
-      min-[992px]:max-w-[1020px]
-      max-w-[794px]
+      min-[1420px]:max-w-350
+      min-[1200px]:max-w-295
+      min-[992px]:max-w-255
+      max-w-192.5
       mx-auto
 
       min-[1420px]:text-[20px]
-      min-[1420px]:leading-[28px]
+      min-[1420px]:leading-7
       
       min-[750px]:text-[18px]
-      min-[750px]:leading-[24px]
-
+      min-[750px]:leading-6
 
       text-[16px]
-      leading-[21px]
+      leading-5.25
       font-weight-[400]
       tracking-tight
       
 
-      min-[750px]:mt-[31px]
-      mt-[21px]
-      mb-[20px]
+      min-[750px]:mt-7.75
+      mt-5.25
+      mb-5
 
-      min-[810px]:px-[10px]
-      px-[20px]
+      min-[810px]:px-2.5
+      px-5
       ">
-          {children}
+          <div className="w-full flex flex-col gap-6">
+            <Nav />
+            {children}
+            <Footer />
+          </div>
       </body>
     </html>
   );

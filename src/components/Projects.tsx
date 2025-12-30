@@ -1,14 +1,20 @@
 'use client';
-import { projects } from '@/data/projects';
-import { useState } from 'react';
+import { getProjects } from '@/services/projectsService';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import type { Project } from '@/types';
 
 export default function Projects() {
+  const [projects, setProjects] = useState<Project[]>([]);
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
+
+  useEffect(() => {
+    getProjects().then(setProjects);
+  }, []);
 
   return (
     <section className="flex">
-      <div className='w-full relative overflow-hidden max-[991px]:hidden'>
+      <div className='w-full relative overflow-hidden max-[992px]:hidden'>
         {hoveredProject !== null && projects[hoveredProject].imgUrl && (
           <Image
             src={`/${projects[hoveredProject].imgUrl}`}

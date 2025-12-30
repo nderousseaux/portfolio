@@ -1,11 +1,7 @@
-export default function Footer() {
-  const socialLinks = [
-    { label: 'Email', href: 'mailto:contact@nldx.sh' },
-    { label: 'GitHub', href: 'https://github.com/nderousseaux', external: true },
-    { label: 'LeetCode', href: 'https://leetcode.com/nderousseaux', external: true },
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/nderousseaux', external: true },
-  ];
+import { getSocialLinks } from '@/services/socialsService';
 
+export default async function Footer() {
+  const socialLinks = await getSocialLinks();
   return (
     <footer className="w-full pt-4">
       <div className="flex flex-col md:flex-row justify-between items-center pt-4">

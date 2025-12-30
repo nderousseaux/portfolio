@@ -1,54 +1,51 @@
-import Description from '@/components/Description';
-import Footer from '@/components/Footer';
-import Logo from '@/components/Logo';
-import Nav from '@/components/Nav';
-import WhatIAm from '@/components/WhatIAm';
 import Projects from '@/components/Projects';
-import TextEnd from '@/components/TextEnd';
+import { getHomeData } from '@/services/homeService';
 
-
-// export default function Page() {
-//   return (
-//     <div className="w-full md:max-w-3xl lg:max-w-6xl lg:w-full flex flex-col gap-16">
-//       <header className="w-full flex justify-between items-start -mb-8">
-//         <Logo />
-//         <Nav />
-//       </header>
-//       <div className="lg:-translate-y-16">
-//         <Description />
-//       </div>
-//       <div className='lg:absolute lg:top-6 lg:right-0 lg:w-11/20'>
-//         <WhatIAm />
-//       </div>
-//       <div className="lg:ml-[45%]">
-//       <Projects />
-//       <TextEnd />
-//       </div>
-//       <Footer />
-//     </div>
-//   );
-// }
-
-export default function Page() {
+export default async function Page() {
+  const homeData = await getHomeData();
   return (
-    <div className="w-full flex flex-col gap-6">
-      <nav className="w-full flex justify-between items-start">
-        <Logo />
-        <Nav />
-      </nav>
+    <>
       <div className="inline min-[992px]:relative min-[992px]:top-[-40px] min-[992px]:left-0">
-        <Description />
+        <section>
+          <p className="description-text">
+            Hello, I&apos;m Nathanaël. I write code and
+            <br className="hidden min-[440px]:inline" /> manage cloud systems.
+            Currently working 
+            <br className="hidden min-[440px]:inline" /> as a cloud engineer at the University of
+            <br className="hidden min-[440px]:inline" /> Strasbourg, teaching part-time and 
+            <br className="hidden min-[440px]:inline" />
+            developing web projects as an independent
+            <br className="hidden min-[440px]:inline" /> software engineer.
+          </p>
+          <br />
+        </section>
       </div>
       <div className="inline min-[992px]:absolute min-[992px]:top-[32px] min-[992px]:right-0 min-[992px]:w-102/200">
-        <WhatIAm />
+        <section className="flex flex-col items-start">
+          <h2>(What&#39;s make me)</h2>
+          <br />
+          {homeData.whatsmakeme.map((skill, index) => (
+            <p key={index}>{skill}</p>
+          ))}
+          <br />
+        </section>
       </div>
 
       <Projects />
       <div className="mt-4 inline min-[992px]:ml-[49%]">
-        <TextEnd />
+        <section>
+          <p className="description-text">
+            To be honest, I&apos;m not really sure
+            <br className="hidden min-[440px]:inline" /> the purpose of this website is.
+            <br className="hidden min-[440px]:inline" /> If you dig a bit, maybe you&apos;ll find
+            <br className="hidden min-[440px]:inline" /> something useful — who knows? In the
+            <br className="hidden min-[440px]:inline" />
+            meantime, it&apos;s just a nice place to 
+            <br className="hidden min-[440px]:inline" /> feed my ego.
+          </p>
+          <br />
+        </section>
       </div>
-      <Footer />
-
-    </div>
+    </>
   );
 }
