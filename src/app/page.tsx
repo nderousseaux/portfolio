@@ -1,5 +1,5 @@
-import Projects from '@/components/Projects';
-import WhatsMakeMe from '@/components/WhatsMakeMe';
+import Projects from '@/components/projects/Projects';
+import WhatsMakeMe from '@/components/home/WhatsMakeMe';
 import { getHomeData } from '@/services/homeService';
 
 export default async function Page() {

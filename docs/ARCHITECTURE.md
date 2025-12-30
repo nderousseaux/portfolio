@@ -5,6 +5,7 @@ src/
   app/         → routing uniquement
   components/  → UI générique (zéro métier)
   features/    → logique métier par domaine
+  hooks/       → hooks React personnalisés
   services/    → services techniques réutilisables
   styles/      → styles globaux
   types/       → types partagés

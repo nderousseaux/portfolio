@@ -1,4 +1,5 @@
 import { getSocialLinks } from '@/services/socialsService';
+import ScrambleLink from '@/components/ui/ScrambleLink';
 
 export default async function Footer() {
   const socialLinks = await getSocialLinks();
@@ -10,7 +11,7 @@ export default async function Footer() {
         </p>
         <div className="flex space-x-4">
           {socialLinks.map((link, index) => (
-            <a
+            <ScrambleLink
               key={index}
               href={link.href}
               target={link.external ? '_blank' : '_self'}
@@ -18,7 +19,7 @@ export default async function Footer() {
               className="text-gray-400 hover:text-white text-sm transition-colors"
             >
               {link.label}
-            </a>
+            </ScrambleLink>
           ))}
         </div>
       </div>
