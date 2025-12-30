@@ -1,8 +1,7 @@
 export default function Nav() {
   const navItems = [
-    { label: '(Who Am I?)', href: '#' },
     { label: 'Things I Made', href: '#' },
-    { label: 'Work together', href: '#' },
+    { label: 'Journey', href: '#' },
     { label: 'Thoughts', href: '#' },
   ];
 
@@ -12,19 +11,23 @@ export default function Nav() {
   ];
 
   return (
-    <nav className="text-end -translate-y-2">
-      <ul>
-        {navItems.map((item, index) => (
-          <li key={index} className={index === 0 ? 'mb-6' : ''}>
-            <a href={item.href}>{item.label}</a>
-          </li>
-        ))}
-        {externalLinks.map((item, index) => (
-          <li key={index} className={index === 0 ? 'mt-6' : ''}>
-            <a href={item.href}>{item.label}</a>
-          </li>
-        ))}
-      </ul>
+    <nav className="text-end">
+      <p>
+        <a href="#">(Home)</a>
+      </p>
+      <br />
+      {navItems.map((item, index) => (
+        <p key={index}>
+          <a href={item.href}>{item.label}</a>
+        </p>
+      ))}
+      <br />
+      {externalLinks.map((item, index) => (
+        <p key={index}>
+          <a href={item.href}>{item.label}</a>
+        </p>
+      ))}
+      <br />
     </nav>
   );
 }

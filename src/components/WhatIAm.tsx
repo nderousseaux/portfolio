@@ -12,12 +12,13 @@ export default function WhatIAm() {
 
   return (
     <section className="flex flex-col items-start">
-      <h2 className="mb-4">(What&#39;s make me)</h2>
-      <ul>
-        {skills.map((skill, index) => (
-          <li key={index}>{skill}</li>
-        ))}
-      </ul>
+      <h2>(What&#39;s make me)</h2>
+      <br />
+      {skills.map((skill, index) => (
+        <p key={index}>{skill}</p>
+      ))}
+      <br />
+      
     </section>
   );
 }

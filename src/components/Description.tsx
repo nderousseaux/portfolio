@@ -1,12 +1,17 @@
 export default function Description() {
   return (
     <section>
-      <p>
-        Hello, I&apos;m Nathanaël. I write code and manage cloud systems. I can&apos;t decide which one I like the most. I always struggle to finish personnal projects because I get distracted by new technologies.
+      <p className="description-text">
+        Hello, I&apos;m Nathanaël. I write code and
+        <br className="hidden min-[440px]:inline" /> manage cloud systems.
+        Currently working 
+        <br className="hidden min-[440px]:inline" /> as a cloud engineer at the University of
+        <br className="hidden min-[440px]:inline" /> Strasbourg, teaching part-time and 
+        <br className="hidden min-[440px]:inline" />
+        developing web projects as an independent
+        <br className="hidden min-[440px]:inline" /> software engineer.
       </p>
-      <p className="mt-4">
-        At the moment, I&apos;m a cloud engineer at the University of Strasbourg, a part-time teacher, and a freelance web developer.
-      </p>
+      <br />
     </section>
   );
 }
