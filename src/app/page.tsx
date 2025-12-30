@@ -1,4 +1,5 @@
 import Projects from '@/components/Projects';
+import WhatsMakeMe from '@/components/WhatsMakeMe';
 import { getHomeData } from '@/services/homeService';
 
 export default async function Page() {
@@ -20,16 +21,7 @@ export default async function Page() {
           <br />
         </section>
       </div>
-      <div className="inline min-[992px]:absolute min-[992px]:top-[32px] min-[992px]:right-0 min-[992px]:w-102/200">
-        <section className="flex flex-col items-start">
-          <h2>(What&#39;s make me)</h2>
-          <br />
-          {homeData.whatsmakeme.map((skill, index) => (
-            <p key={index}>{skill}</p>
-          ))}
-          <br />
-        </section>
-      </div>
+      <WhatsMakeMe skills={homeData.whatsmakeme} />
 
       <Projects />
       <div className="mt-4 inline min-[992px]:ml-[49%]">

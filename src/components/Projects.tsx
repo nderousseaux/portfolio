@@ -14,7 +14,7 @@ export default function Projects() {
 
   return (
     <section className="flex">
-      <div className='w-full relative overflow-hidden max-[992px]:hidden'>
+      <div className='w-full relative overflow-hidden max-[992px]:opacity-0 max-[992px]:max-h-0 max-[992px]:w-0'>
         {hoveredProject !== null && projects[hoveredProject].imgUrl && (
           <Image
             src={`/${projects[hoveredProject].imgUrl}`}

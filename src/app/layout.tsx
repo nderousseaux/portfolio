@@ -3,6 +3,7 @@ import { metadata } from "@/../metadata";
 import "@/style/globals.css";
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
+import ResizeTransition from '@/components/ResizeTransition';
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -50,6 +51,7 @@ children: React.ReactNode;
       min-[810px]:px-2.5
       px-5
       ">
+          <ResizeTransition />
           <div className="w-full flex flex-col gap-6">
             <Nav />
             {children}
