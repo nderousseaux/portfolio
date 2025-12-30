@@ -45,3 +45,169 @@ body, main, section, div, nav, p, h1, h2, h3, h4, h5, h6 {
     transition: opacity 0.6s ease, max-height 0.6s ease !important;
   }
 }
+
+/* Cacher les images pendant le chargement initial pour l'animation de révélation */
+.page-reveal-container img {
+  opacity: 0;
+}
+
+/* Effet de glitch pour les images des projets */
+.glitch-container {
+  width: 380px;
+  height: 380px;
+  position: relative;
+  overflow: hidden;
+}
+
+.glitch-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch-container .glitch-img-2,
+.glitch-container .glitch-img-3 {
+  opacity: 0;
+}
+
+.glitch-container.active {
+  animation: glitch-main 0.4s steps(4, end);
+}
+
+/* Ancienne image qui disparaît */
+.glitch-container.active .glitch-old-1 {
+  animation: glitch-fade-out 0.4s ease-out forwards;
+  filter: brightness(1.2) contrast(1.1);
+}
+
+.glitch-container.active .glitch-old-2 {
+  animation: glitch-old-slice 0.4s steps(3, end);
+  filter: hue-rotate(180deg) brightness(0.8);
+  opacity: 0.6;
+}
+
+/* Nouvelle image qui apparaît */
+.glitch-container.active .glitch-img-1 {
+  filter: brightness(1.1);
+  animation: glitch-fade-in 0.4s ease-in forwards;
+}
+
+.glitch-container.active .glitch-img-2 {
+  opacity: 1;
+  filter: hue-rotate(90deg) brightness(0.9);
+  animation: glitch-top 0.4s steps(3, end) infinite;
+  mix-blend-mode: screen;
+}
+
+.glitch-container.active .glitch-img-3 {
+  opacity: 1;
+  filter: hue-rotate(270deg) brightness(0.9);
+  animation: glitch-bottom 0.4s steps(3, end) infinite;
+  mix-blend-mode: screen;
+}
+
+@keyframes glitch-main {
+  0% {
+    transform: translate(0);
+  }
+  25% {
+    transform: translate(-5px, 5px);
+  }
+  50% {
+    transform: translate(5px, -5px);
+  }
+  75% {
+    transform: translate(-3px, -3px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+@keyframes glitch-fade-out {
+  0% {
+    opacity: 1;
+    transform: translate(0);
+  }
+  50% {
+    opacity: 0.6;
+    transform: translate(8px, -8px);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-10px, 10px);
+  }
+}
+
+@keyframes glitch-fade-in {
+  0% {
+    opacity: 0;
+    transform: translate(10px, -10px);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translate(-8px, 8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes glitch-old-slice {
+  0% {
+    clip-path: polygon(0 20%, 100% 20%, 100% 40%, 0 40%);
+    transform: translate(6px, -6px);
+  }
+  33% {
+    clip-path: polygon(0 60%, 100% 60%, 100% 80%, 0 80%);
+    transform: translate(-6px, 6px);
+  }
+  66% {
+    clip-path: polygon(0 0%, 100% 0%, 100% 20%, 0 20%);
+    transform: translate(4px, 4px);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes glitch-top {
+  0% {
+    clip-path: polygon(0 0, 100% 0, 100% 30%, 0 30%);
+    transform: translate(4px, -4px);
+  }
+  33% {
+    clip-path: polygon(0 40%, 100% 40%, 100% 70%, 0 70%);
+    transform: translate(-4px, 4px);
+  }
+  66% {
+    clip-path: polygon(0 10%, 100% 10%, 100% 35%, 0 35%);
+    transform: translate(3px, -3px);
+  }
+  100% {
+    clip-path: polygon(0 0, 100% 0, 100% 30%, 0 30%);
+    transform: translate(-3px, 3px);
+  }
+}
+
+@keyframes glitch-bottom {
+  0% {
+    clip-path: polygon(0 70%, 100% 70%, 100% 100%, 0 100%);
+    transform: translate(-4px, 4px);
+  }
+  33% {
+    clip-path: polygon(0 30%, 100% 30%, 100% 60%, 0 60%);
+    transform: translate(4px, -4px);
+  }
+  66% {
+    clip-path: polygon(0 65%, 100% 65%, 100% 90%, 0 90%);
+    transform: translate(-3px, -3px);
+  }
+  100% {
+    clip-path: polygon(0 70%, 100% 70%, 100% 100%, 0 100%);
+    transform: translate(3px, 3px);
+  }
+}

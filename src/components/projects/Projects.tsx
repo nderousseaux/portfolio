@@ -43,22 +43,87 @@ function ProjectItem({ project }: { project: Project }) {
 export default function Projects() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [hoveredProject, setHoveredProject] = useState<number>(0);
+  const [previousProject, setPreviousProject] = useState<number>(0);
+  const [isGlitching, setIsGlitching] = useState(false);
 
   useEffect(() => {
     getProjects().then(setProjects);
+    
+    // Écouter l'événement de révélation de l'image
+    const handleImageReveal = () => {
+      setIsGlitching(true);
+      setTimeout(() => {
+        setIsGlitching(false);
+      }, 400);
+    };
+    
+    window.addEventListener('project-image-revealed', handleImageReveal);
+    
+    return () => {
+      window.removeEventListener('project-image-revealed', handleImageReveal);
+    };
   }, []);
+
+  const handleProjectHover = (index: number) => {
+    if (index !== hoveredProject) {
+      setPreviousProject(hoveredProject);
+      setIsGlitching(true);
+      setTimeout(() => {
+        setHoveredProject(index);
+      }, 150);
+      setTimeout(() => {
+        setIsGlitching(false);
+      }, 400);
+    }
+  };
 
   return (
     <section className="flex">
       <div className='w-full relative overflow-hidden max-[992px]:opacity-0 max-[992px]:max-h-0 max-[992px]:w-0'>
         {projects[hoveredProject]?.imgUrl && (
-          <Image
-            src={`/${projects[hoveredProject].imgUrl}`}
-            alt={projects[hoveredProject].title}
-            width={380}
-            height={380}
-            className="object-cover"
-          />
+          <div className={`glitch-container ${isGlitching ? 'active' : ''}`}>
+            {/* Ancienne image pendant le glitch */}
+            {isGlitching && projects[previousProject]?.imgUrl && (
+              <>
+                <Image
+                  src={`/${projects[previousProject].imgUrl}`}
+                  alt={projects[previousProject].title}
+                  width={380}
+                  height={380}
+                  className="glitch-img glitch-old-1 object-cover"
+                />
+                <Image
+                  src={`/${projects[previousProject].imgUrl}`}
+                  alt={projects[previousProject].title}
+                  width={380}
+                  height={380}
+                  className="glitch-img glitch-old-2 object-cover"
+                />
+              </>
+            )}
+            {/* Nouvelle image */}
+            <Image
+              src={`/${projects[hoveredProject].imgUrl}`}
+              alt={projects[hoveredProject].title}
+              width={380}
+              height={380}
+              className="glitch-img glitch-img-1 object-cover"
+            />
+            <Image
+              src={`/${projects[hoveredProject].imgUrl}`}
+              alt={projects[hoveredProject].title}
+              width={380}
+              height={380}
+              className="glitch-img glitch-img-2 object-cover"
+            />
+            <Image
+              src={`/${projects[hoveredProject].imgUrl}`}
+              alt={projects[hoveredProject].title}
+              width={380}
+              height={380}
+              className="glitch-img glitch-img-3 object-cover"
+            />
+          </div>
         )}
       </div>
       <div className="flex flex-col divide-y divide-gray-600 w-full min-[992px]:min-w-102/200 border-t border-gray-600">
@@ -66,8 +131,8 @@ export default function Projects() {
           <div 
             key={index}
             className='mt-4'
-            onMouseEnter={() => setHoveredProject(index)}
-            onMouseLeave={() => setHoveredProject(index)}
+            onMouseEnter={() => handleProjectHover(index)}
+            onMouseLeave={() => handleProjectHover(index)}
           >
             <ProjectItem project={project} />
           </div>

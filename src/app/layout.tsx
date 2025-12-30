@@ -4,6 +4,7 @@ import "@/style/globals.css";
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import ResizeTransition from '@/utils/ResizeTransition';
+import PageReveal from '@/components/ui/PageReveal';
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -52,11 +53,13 @@ children: React.ReactNode;
       px-5
       ">
           <ResizeTransition />
-          <div className="w-full flex flex-col gap-6">
-            <Nav />
-            {children}
-            <Footer />
-          </div>
+          <PageReveal>
+            <div className="w-full flex flex-col gap-6">
+              <Nav />
+              {children}
+              <Footer />
+            </div>
+          </PageReveal>
       </body>
     </html>
   );
