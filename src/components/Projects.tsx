@@ -3,7 +3,7 @@ import { getProjects } from '@/services/projectsService';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import type { Project } from '@/types';
-import ScrambleLink from '@/components/ScrambleLink';
+import ScrambleLink from '@/components/ui/ScrambleLink';
 import { useScramble } from '@/hooks/useScramble';
 
 function ProjectItem({ project }: { project: Project }) {
