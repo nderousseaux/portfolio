@@ -74,8 +74,8 @@ export default function PageReveal({ children }: { children: React.ReactNode }) 
                 element: parent,
                 startIndex: currentIndex
               });
-              // Cacher initialement les bordures
-              parent.style.borderColor = 'transparent';
+              // Forcer les bordures en noir au début
+              parent.style.borderColor = 'black';
             }
           }
           
@@ -186,7 +186,7 @@ export default function PageReveal({ children }: { children: React.ReactNode }) 
         // Mettre à jour les bordures
         allBordersRef.current.forEach(({ element, startIndex }) => {
           if (currentCharCount >= startIndex) {
-            element.style.borderColor = '';
+            element.style.borderColor = 'rgb(75, 85, 99)'; // gray-600
           }
         });
 
@@ -213,9 +213,9 @@ export default function PageReveal({ children }: { children: React.ReactNode }) 
           allTextNodesRef.current.forEach(({ node, originalText }) => {
             node.textContent = originalText;
           });
-          // Restaurer les bordures
+          // Garder les bordures en gray-600 (le hover utilise !important)
           allBordersRef.current.forEach(({ element }) => {
-            element.style.borderColor = '';
+            element.style.borderColor = 'rgb(75, 85, 99)'; // gray-600
           });
           // Les images gardent leur opacity: 1
         }
@@ -224,6 +224,9 @@ export default function PageReveal({ children }: { children: React.ReactNode }) 
       animate();
     };
 
+    // Collecter immédiatement pour cacher les bordures AVANT de rendre visible
+    collectTextNodes();
+    
     // Attendre que tout soit chargé, puis collecter et animer
     const timeout = setTimeout(() => {
       collectTextNodes();

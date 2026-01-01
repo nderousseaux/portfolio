@@ -26,7 +26,7 @@ function ProjectItem({ project }: { project: Project }) {
   return (
     <a 
       href={project.link || '#'}
-      className="py-4 flex justify-between items-start border-t border-gray-600 hover:border-white transition-colors cursor-pointer"
+      className="py-4 flex justify-between items-start border-t border-black hover:!border-white transition-colors cursor-pointer"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -46,10 +46,20 @@ export default function Projects() {
   const [hoveredProject, setHoveredProject] = useState<number>(0);
   const [previousProject, setPreviousProject] = useState<number>(0);
   const [triggerGlitch, setTriggerGlitch] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    getProjects().then(setProjects);
+    setIsMounted(true);
+    getProjects().then((data) => {
+      setProjects(data);
+      setIsLoaded(true);
+    });
   }, []);
+
+  if (!isMounted || !isLoaded) {
+    return null;
+  }
 
   const handleProjectHover = (index: number) => {
     if (index !== hoveredProject) {
@@ -88,7 +98,7 @@ export default function Projects() {
           />
         )}
       </div>
-      <div className="flex flex-col  w-full min-[992px]:min-w-102/200">
+      <div className="flex flex-col w-full min-[992px]:min-w-102/200">
         {projects.map((project, index) => (
           <div 
             key={index}
@@ -97,7 +107,7 @@ export default function Projects() {
             <ProjectItem project={project} />
           </div>
         ))}
-        <ScrambleLink href="#" className="py-4 text-center border-t border-gray-600 hover:border-white transition-colors text-gray-400 hover:text-white text-base flex justify-center items-center">
+        <ScrambleLink href="#" className="py-4 text-center border-t border-black hover:!border-white transition-colors text-gray-400 hover:text-white text-base flex justify-center items-center">
           See more →
         </ScrambleLink>
       </div>
