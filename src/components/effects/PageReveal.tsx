@@ -12,6 +12,7 @@ export default function PageReveal({ children }: { children: React.ReactNode }) 
   const allBordersRef = useRef<{ element: HTMLElement; startIndex: number }[]>([]);
   const allImagesRef = useRef<{ element: HTMLElement; startIndex: number }[]>([]);
   const projectImageRevealedRef = useRef(false);
+  const projectsSectionIndexRef = useRef(-1);
 
   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()';
 
@@ -94,25 +95,44 @@ export default function PageReveal({ children }: { children: React.ReactNode }) 
         // Vérifier si l'image est dans le nav
         let parent = img.parentElement;
         let isInNav = false;
+        let isInGlitchContainer = false;
         while (parent && parent !== contentRef.current) {
           if (parent.tagName === 'NAV') {
             isInNav = true;
-            break;
+          }
+          if (parent.classList.contains('glitch-container')) {
+            isInGlitchContainer = true;
           }
           parent = parent.parentElement;
         }
         
-        images.push({
-          element: img as HTMLElement,
-          startIndex: isInNav ? 0 : (projectsSectionIndex >= 0 ? projectsSectionIndex : 0)
-        });
-        (img as HTMLElement).style.opacity = '0';
+        // Si l'image est dans un glitch-container, on cache le container, pas l'image
+        if (isInGlitchContainer) {
+          let glitchContainer = img.parentElement;
+          while (glitchContainer && !glitchContainer.classList.contains('glitch-container')) {
+            glitchContainer = glitchContainer.parentElement;
+          }
+          if (glitchContainer && !images.find(i => i.element === glitchContainer)) {
+            images.push({
+              element: glitchContainer as HTMLElement,
+              startIndex: isInNav ? 0 : (projectsSectionIndex >= 0 ? projectsSectionIndex : 0)
+            });
+            (glitchContainer as HTMLElement).style.opacity = '0';
+          }
+        } else {
+          images.push({
+            element: img as HTMLElement,
+            startIndex: isInNav ? 0 : (projectsSectionIndex >= 0 ? projectsSectionIndex : 0)
+          });
+          (img as HTMLElement).style.opacity = '0';
+        }
       });
 
       allTextNodesRef.current = textNodes;
       allBordersRef.current = borders;
       allImagesRef.current = images;
       totalCharsRef.current = currentIndex;
+      projectsSectionIndexRef.current = projectsSectionIndex;
     };
 
     const startAnimation = () => {
@@ -172,15 +192,15 @@ export default function PageReveal({ children }: { children: React.ReactNode }) 
         // Mettre à jour les images
         allImagesRef.current.forEach(({ element, startIndex }) => {
           if (currentCharCount >= startIndex) {
-            element.style.opacity = '1';
-            
-            // Déclencher l'événement pour l'image des projets
-            if (!projectImageRevealedRef.current && element.parentElement?.classList.contains('glitch-container')) {
+            // Déclencher l'événement pour l'image des projets AVANT de la rendre visible
+            if (!projectImageRevealedRef.current && 
+                element.classList.contains('glitch-container') && 
+                startIndex === projectsSectionIndexRef.current) {
               projectImageRevealedRef.current = true;
-              setTimeout(() => {
-                window.dispatchEvent(new Event('project-image-revealed'));
-              }, 100);
+              window.dispatchEvent(new Event('project-image-revealed'));
             }
+            
+            element.style.opacity = '1';
           }
         });
 

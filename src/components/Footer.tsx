@@ -1,5 +1,5 @@
 import { getSocialLinks } from '@/services/socialsService';
-import ScrambleLink from '@/components/ui/ScrambleLink';
+import ScrambleLink from '@/components/effects/ScrambleLink';
 
 export default async function Footer() {
   const socialLinks = await getSocialLinks();

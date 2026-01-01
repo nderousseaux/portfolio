@@ -4,7 +4,7 @@ import "@/style/globals.css";
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import ResizeTransition from '@/utils/ResizeTransition';
-import PageReveal from '@/components/ui/PageReveal';
+import PageReveal from '@/components/effects/PageReveal';
 
 export const viewport: Viewport = {
   width: "device-width",

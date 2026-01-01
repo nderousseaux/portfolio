@@ -1,13 +1,31 @@
-import Image from 'next/image';
+'use client';
 import { getNavItems, getExternalLinks } from '@/services/navigationService';
-import ScrambleLink from '@/components/ui/ScrambleLink';
+import ScrambleLink from '@/components/effects/ScrambleLink';
+import GlitchImage from '@/components/effects/GlitchImage';
+import { useEffect, useState } from 'react';
 
-export default async function Nav() {
-  const navItems = await getNavItems();
-  const externalLinks = await getExternalLinks();
+export default function Nav() {
+  const [navItems, setNavItems] = useState<any[]>([]);
+  const [externalLinks, setExternalLinks] = useState<any[]>([]);
+
+  useEffect(() => {
+    getNavItems().then(setNavItems);
+    getExternalLinks().then(setExternalLinks);
+  }, []);
+
   return (
     <nav className="w-full flex justify-between items-start">
-        <Image src="/logo.svg" alt="Logo" width={75} height={75} />
+      <GlitchImage
+        src="/logo.svg"
+        alt="Logo"
+        width={75}
+        height={75}
+        glitchConfig={{
+          enableHover: true,
+          enableOnReveal: true,
+          manualIntensity: 'subtle',
+        }}
+      />
       <div className="text-end">
         <p>
           <ScrambleLink href="#">(Home)</ScrambleLink>
