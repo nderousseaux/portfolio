@@ -5,4 +5,5 @@ export const socialLinks: SocialLink[] = [
   { label: 'GitHub', href: 'https://github.com/nderousseaux', external: true },
   { label: 'LeetCode', href: 'https://leetcode.com/nderousseaux', external: true },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/nderousseaux', external: true },
+  { label: 'PGP', href: 'https://twitter.com/nderousseaux', external: true },
 ];

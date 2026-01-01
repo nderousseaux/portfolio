@@ -1,0 +1,14 @@
+/* Cacher les images pendant le chargement initial pour l'animation de révélation */
+.pageRevealContainer img {
+  opacity: 0;
+}
+
+/* Exception pour les images dans le glitch-container */
+.pageRevealContainer :global(.glitch-container) img {
+  opacity: 1;
+}
+
+/* Cacher le glitch-container lui-même pendant le chargement */
+.pageRevealContainer :global(.glitch-container) {
+  opacity: 0;
+}

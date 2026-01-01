@@ -1,6 +1,6 @@
 import type { Viewport } from "next";
 import { metadata } from "@/../metadata";
-import "@/style/globals.css";
+import "@/globals.css";
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import ResizeTransition from '@/utils/ResizeTransition';

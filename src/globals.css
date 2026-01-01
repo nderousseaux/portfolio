@@ -1,0 +1,47 @@
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/preflight.css" layer(base);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+/* Hide scrollbar but keep functionality */
+body::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+/* Selection colors */
+::selection {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+/* Smooth transitions for ALL layout changes */
+body * {
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Ensure width changes are smooth */
+body, main, section, div, nav, p, h1, h2, h3, h4, h5, h6 {
+  transition: width 0.6s ease, max-width 0.6s ease, min-width 0.6s ease, 
+              margin 0.6s ease, padding 0.6s ease, 
+              top 0.6s ease, left 0.6s ease, right 0.6s ease, bottom 0.6s ease,
+              transform 0.6s ease, opacity 0.6s ease !important;
+}
+
+/* Smooth visibility changes */
+@media (max-width: 992px) {
+  div[class*="max-[992px]:hidden"] {
+    opacity: 0;
+    transition: opacity 0.6s ease, max-height 0.6s ease !important;
+    max-height: 0;
+    overflow: hidden;
+  }
+}
+
+@media (min-width: 992px) {
+  div[class*="max-[992px]:hidden"] {
+    opacity: 1;
+    max-height: 1000px;
+    transition: opacity 0.6s ease, max-height 0.6s ease !important;
+  }
+}

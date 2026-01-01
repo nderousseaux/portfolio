@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
+import styles from './GlitchImage.module.css';
 
 export interface GlitchImageProps {
   src: string;
@@ -145,7 +146,7 @@ export default function GlitchImage({
 
   return (
     <div
-      className={`glitch-container ${isGlitching ? 'active' : ''} ${isSubtle ? 'subtle' : ''}`}
+      className={`${styles.glitchContainer} ${isGlitching ? styles.active : ''} ${isSubtle ? styles.subtle : ''} glitch-container`}
       onMouseEnter={handleHover}
       style={{ width, height }}
     >
@@ -157,14 +158,14 @@ export default function GlitchImage({
             alt={previousAlt || alt}
             width={width}
             height={height}
-            className={`glitch-img glitch-old-1 ${className}`}
+            className={`${styles.glitchImg} ${styles.glitchOld1} ${className}`}
           />
           <Image
             src={previousSrc}
             alt={previousAlt || alt}
             width={width}
             height={height}
-            className={`glitch-img glitch-old-2 ${className}`}
+            className={`${styles.glitchImg} ${styles.glitchOld2} ${className}`}
           />
         </>
       )}
@@ -174,21 +175,21 @@ export default function GlitchImage({
         alt={alt}
         width={width}
         height={height}
-        className={`glitch-img glitch-img-1 ${className}`}
+        className={`${styles.glitchImg} ${styles.glitchImg1} ${className}`}
       />
       <Image
         src={src}
         alt={alt}
         width={width}
         height={height}
-        className={`glitch-img glitch-img-2 ${className}`}
+        className={`${styles.glitchImg} ${styles.glitchImg2} ${className}`}
       />
       <Image
         src={src}
         alt={alt}
         width={width}
         height={height}
-        className={`glitch-img glitch-img-3 ${className}`}
+        className={`${styles.glitchImg} ${styles.glitchImg3} ${className}`}
       />
     </div>
   );

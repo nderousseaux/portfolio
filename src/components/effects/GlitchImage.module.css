@@ -1,74 +1,11 @@
-@layer theme, base, components, utilities;
-@import "tailwindcss/theme.css" layer(theme);
-@import "tailwindcss/preflight.css" layer(base);
-@import "tailwindcss/utilities.css" layer(utilities);
-
-/* Hide scrollbar but keep functionality */
-body::-webkit-scrollbar {
-  width: 0px;
-  background: transparent;
-}
-
-/* Selection colors */
-::selection {
-  background-color: rgba(255, 255, 255, 0.2);
-  color: #ffffff;
-}
-
-/* Smooth transitions for ALL layout changes */
-body * {
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
-}
-
-/* Ensure width changes are smooth */
-body, main, section, div, nav, p, h1, h2, h3, h4, h5, h6 {
-  transition: width 0.6s ease, max-width 0.6s ease, min-width 0.6s ease, 
-              margin 0.6s ease, padding 0.6s ease, 
-              top 0.6s ease, left 0.6s ease, right 0.6s ease, bottom 0.6s ease,
-              transform 0.6s ease, opacity 0.6s ease !important;
-}
-
-/* Smooth visibility changes */
-@media (max-width: 992px) {
-  div[class*="max-[992px]:hidden"] {
-    opacity: 0;
-    transition: opacity 0.6s ease, max-height 0.6s ease !important;
-    max-height: 0;
-    overflow: hidden;
-  }
-}
-
-@media (min-width: 992px) {
-  div[class*="max-[992px]:hidden"] {
-    opacity: 1;
-    max-height: 1000px;
-    transition: opacity 0.6s ease, max-height 0.6s ease !important;
-  }
-}
-
-/* Cacher les images pendant le chargement initial pour l'animation de révélation */
-.page-reveal-container img {
-  opacity: 0;
-}
-
-/* Exception pour les images dans le glitch-container */
-.page-reveal-container .glitch-container img {
-  opacity: 1;
-}
-
-/* Cacher le glitch-container lui-même pendant le chargement */
-.page-reveal-container .glitch-container {
-  opacity: 0;
-}
-
 /* Effet de glitch pour les images des projets */
-.glitch-container {
+.glitchContainer {
   position: relative;
   overflow: hidden;
   display: inline-block;
 }
 
-.glitch-img {
+.glitchImg {
   position: absolute;
   top: 0;
   left: 0;
@@ -76,63 +13,63 @@ body, main, section, div, nav, p, h1, h2, h3, h4, h5, h6 {
   height: 100%;
 }
 
-.glitch-container .glitch-img-2,
-.glitch-container .glitch-img-3 {
+.glitchContainer .glitchImg2,
+.glitchContainer .glitchImg3 {
   opacity: 0;
 }
 
-.glitch-container.active {
+.glitchContainer.active {
   animation: glitch-main 0.4s steps(4, end);
 }
 
 /* Version subtile pour les glitches périodiques */
-.glitch-container.active.subtle {
+.glitchContainer.active.subtle {
   animation: glitch-main-subtle 0.4s steps(4, end) !important;
 }
 
 /* Ancienne image qui disparaît */
-.glitch-container.active .glitch-old-1 {
+.glitchContainer.active .glitchOld1 {
   animation: glitch-fade-out 0.4s ease-out forwards;
   filter: brightness(1.2) contrast(1.1);
 }
 
-.glitch-container.active .glitch-old-2 {
+.glitchContainer.active .glitchOld2 {
   animation: glitch-old-slice 0.4s steps(3, end);
   filter: hue-rotate(180deg) brightness(0.8);
   opacity: 0.6;
 }
 
 /* Nouvelle image qui apparaît */
-.glitch-container .glitch-img-1 {
+.glitchContainer .glitchImg1 {
   opacity: 1;
 }
 
-.glitch-container.active .glitch-img-1 {
+.glitchContainer.active .glitchImg1 {
   filter: brightness(1.1);
 }
 
-.glitch-container.active .glitch-img-2 {
+.glitchContainer.active .glitchImg2 {
   opacity: 1;
   filter: hue-rotate(90deg) brightness(0.9);
   animation: glitch-top 0.4s steps(3, end) infinite;
   mix-blend-mode: screen;
 }
 
-.glitch-container.active.subtle .glitch-img-2 {
+.glitchContainer.active.subtle .glitchImg2 {
   opacity: 0.01 !important;
   filter: hue-rotate(30deg) brightness(0.98) !important;
   animation: glitch-top-subtle 0.4s steps(3, end) infinite !important;
   mix-blend-mode: screen;
 }
 
-.glitch-container.active .glitch-img-3 {
+.glitchContainer.active .glitchImg3 {
   opacity: 1;
   filter: hue-rotate(270deg) brightness(0.9);
   animation: glitch-bottom 0.4s steps(3, end) infinite;
   mix-blend-mode: screen;
 }
 
-.glitch-container.active.subtle .glitch-img-3 {
+.glitchContainer.active.subtle .glitchImg3 {
   opacity: 0.01 !important;
   filter: hue-rotate(30deg) brightness(0.98) !important;
   animation: glitch-bottom-subtle 0.4s steps(3, end) infinite !important;

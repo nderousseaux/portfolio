@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import styles from './PageReveal.module.css';
 
 export default function PageReveal({ children }: { children: React.ReactNode }) {
   const [isRevealing, setIsRevealing] = useState(true);
@@ -241,7 +242,7 @@ export default function PageReveal({ children }: { children: React.ReactNode }) 
   }, []);
 
   return (
-    <div ref={contentRef} style={{ opacity: isReady ? 1 : 0 }} className="page-reveal-container">
+    <div ref={contentRef} style={{ opacity: isReady ? 1 : 0 }} className={styles.pageRevealContainer}>
       {children}
     </div>
   );
