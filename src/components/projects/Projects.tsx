@@ -26,7 +26,7 @@ function ProjectItem({ project }: { project: Project }) {
   return (
     <a 
       href={project.link || '#'}
-      className="pt-4 mb-4 flex justify-between items-start border-t border-gray-600 hover:border-white transition-colors cursor-pointer"
+      className="py-4 flex justify-between items-start border-t border-gray-600 hover:border-white transition-colors cursor-pointer"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >

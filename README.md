@@ -20,22 +20,23 @@ This project is my personal portfolio website, built with Next.js App Router and
 	<img src="docs/home.png" alt="Portfolio Homepage" width="1000"/>
 </p>
 
-<!-- ## ✨ Features -->
+## ✨ Features
 
-<!-- ## 🚀 Tech Stack & Practices
+- **Custom Effects**: Glitch image transitions, text scramble animations, and page reveal effects
+- **Responsive Design**: Fully responsive layout with Tailwind CSS
+
+## 🚀 Tech Stack & Practices
 
 This project implements modern web development best practices:
 
-- **Next.js 15 App Router**: Latest routing and rendering capabilities
+- **Next.js 16 App Router**: Latest routing and rendering capabilities with React 19
 - **TypeScript**: Type safety and better developer experience
-- **Tailwind CSS**: Utility-first CSS framework for rapid UI development
-- **Component Architecture**: Modular, reusable components
-- **Code Organization**: Clear separation of concerns (components, data, styles)
+- **Tailwind CSS 4**: Latest utility-first CSS framework for rapid UI development
+- **Component Architecture**: Modular, reusable components with clear separation
+- **Code Organization**: Clean architecture with features, services, and hooks separation
 - **Responsive Design**: Mobile-first approach with Tailwind breakpoints
 - **Images Optimization**: Next.js Image component for automatic optimization
-- **Accessibility**: Semantic HTML and proper ARIA labels
-- **SEO Optimization**: Meta tags and structured data for better search visibility
-- **Performance**: Static generation and optimized bundle size -->
+- **Performance**: Static generation and optimized bundle size
 
 ## 🛠️ Getting started
 
