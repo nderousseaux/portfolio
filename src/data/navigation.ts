@@ -7,6 +7,6 @@ export const navItems: NavItem[] = [
 ];
 
 export const externalLinks: NavItem[] = [
-  { label: 'MRS →', href: '#' },
-  { label: 'Zia →', href: '#' },
+  { label: 'MRS', href: '#' },
+  { label: 'Zia', href: '#' },
 ];

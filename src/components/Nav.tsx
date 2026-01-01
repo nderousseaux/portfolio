@@ -39,7 +39,7 @@ export default function Nav() {
         <br />
         {externalLinks.map((item, index) => (
           <p key={index}>
-            <ScrambleLink href={item.href}>{item.label}</ScrambleLink>
+            <ScrambleLink href={item.href}>{item.label}</ScrambleLink> &gt;
           </p>
         ))}
         <br />
