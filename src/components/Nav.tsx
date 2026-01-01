@@ -16,7 +16,7 @@ export default function Nav() {
   return (
     <nav className="w-full flex justify-between items-start">
       <GlitchImage
-        src="/logo.svg"
+        src="/logo.png"
         alt="Logo"
         width={75}
         height={75}
