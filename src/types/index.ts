@@ -16,6 +16,8 @@ export interface SocialLink {
   label: string;
   href: string;
   external?: boolean;
+  isPgp?: boolean;
+  pgpKey?: string;
 }
 
 export interface NavItem {
