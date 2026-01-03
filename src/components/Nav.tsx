@@ -42,7 +42,7 @@ export default function Nav() {
         <br />
         {externalLinks.map((item, index) => (
           <p key={index} className={item.disabled ? 'line-through' : ''}>
-            <ScrambleLink href={item.href}>{item.label}</ScrambleLink> &gt;
+            <ScrambleLink href={item.href}>{`${item.label} >`}</ScrambleLink>
           </p>
         ))}
         <br />
