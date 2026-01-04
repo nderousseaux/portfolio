@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useCallback, ReactNode } from 'react';
+import { useEffect, ReactNode } from 'react';
 
 interface ModalProps {
   isOpen: boolean;
@@ -18,11 +18,11 @@ interface ModalProps {
 }
 
 const maxWidthClasses = {
-  sm: 'min-[440px]:max-w-sm',
-  md: 'min-[440px]:max-w-md',
-  lg: 'min-[440px]:max-w-lg',
-  xl: 'min-[440px]:max-w-xl',
-  '2xl': 'min-[750px]:max-w-2xl',
+  sm: 'xs:max-w-sm',
+  md: 'xs:max-w-md',
+  lg: 'xs:max-w-lg',
+  xl: 'xs:max-w-xl',
+  '2xl': 'sm-md:max-w-2xl',
 };
 
 export default function Modal({
@@ -80,22 +80,24 @@ export default function Modal({
       onClick={handleBackdropClick}
     >
       <div 
-        className={`relative max-[440px]:w-auto max-[440px]:max-w-[calc(100%-32px)] min-[440px]:w-full ${maxWidthClasses[maxWidth]} bg-black border flex flex-col 
-                   max-h-[90vh]
-                   min-[810px]:p-8 min-[750px]:p-6 p-4
-                   min-[810px]:gap-4 gap-3
-                   max-[440px]:rounded`}
+        className={`
+          relative max-h-[90vh] bg-black border flex flex-col
+          max-xs:w-full max-xs:h-full max-xs:rounded-none
+          xs:w-full xs:max-w-lg xs:rounded ${maxWidthClasses[maxWidth]}
+          p-4 sm-md:p-6 md:p-8
+          gap-3 md:gap-4
+        `}
       >
         {/* Header */}
         <div className="flex justify-between items-center">
-          <h2 className="min-[750px]:text-2xl text-lg font-mono text-white">
+          <h2 className="text-lg sm-md:text-2xl font-mono text-white">
             {title}
           </h2>
           <button
             onClick={onClose}
             onMouseEnter={onCloseButtonHover?.onEnter}
             onMouseLeave={onCloseButtonHover?.onLeave}
-            className="text-gray-500 hover:text-white text-[11px] min-[750px]:text-xs font-mono ml-4 cursor-pointer whitespace-nowrap"
+            className="text-gray-500 hover:text-white text-[11px] sm-md:text-xs font-mono ml-4 cursor-pointer whitespace-nowrap"
             aria-label="Close"
           >
             {closeButtonText}

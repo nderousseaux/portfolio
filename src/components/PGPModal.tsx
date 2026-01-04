@@ -61,7 +61,7 @@ export default function PGPModal({ isOpen, onClose, pgpKey }: PGPModalProps) {
           onClick={handleCopy}
           onMouseEnter={startCopyScramble}
           onMouseLeave={stopCopyScramble}
-          className={`font-mono text-[11px] min-[750px]:text-xs cursor-pointer ${
+          className={`font-mono text-[11px] sm-md:text-xs cursor-pointer ${
             copied
               ? 'text-green-400'
               : 'text-gray-500 hover:text-white'
@@ -71,7 +71,7 @@ export default function PGPModal({ isOpen, onClose, pgpKey }: PGPModalProps) {
         </button>
       }
     >
-      <pre className="text-[11px] min-[750px]:text-xs max-[440px]:text-[9px] text-gray-400 font-mono whitespace-pre-wrap break-all leading-relaxed max-[440px]:leading-normal m-0">
+      <pre className="text-[11px] sm-md:text-xs max-xs:text-[9px] text-gray-400 font-mono whitespace-pre-wrap break-all leading-relaxed max-xs:leading-normal m-0">
 {pgpKey}
       </pre>
     </Modal>

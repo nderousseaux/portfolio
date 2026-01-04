@@ -8,8 +8,8 @@ export default async function Page() {
   const projects = await getProjects();
   return (
     <>
-      <div className="inline min-[992px]:relative min-[992px]:top-[-40px] min-[992px]:left-0">
-        <section className="max-w-full min-[1420px]:max-w-[31rem] min-[750px]:max-w-[28rem] min-[440px]:max-w-[24.5rem]">
+      <div className="inline lg:relative lg:-top-10 lg:left-0">
+        <section className="max-w-full xs:max-w-content-xs sm-md:max-w-content-sm 2xl:max-w-content-lg">
           <p className="description-text">
             {homeData.description}
           </p>
@@ -18,13 +18,13 @@ export default async function Page() {
         {/* <section>
           <p className="description-text">
             Hello, I&apos;m Nathanaël. I write code and
-            <br className="hidden min-[440px]:inline" /> manage cloud systems.
+            <br className="hidden xs:inline" /> manage cloud systems.
             Currently working 
-            <br className="hidden min-[440px]:inline" /> as a cloud engineer at the University of
-            <br className="hidden min-[440px]:inline" /> Strasbourg, teaching part-time and 
-            <br className="hidden min-[440px]:inline" />
+            <br className="hidden xs:inline" /> as a cloud engineer at the University of
+            <br className="hidden xs:inline" /> Strasbourg, teaching part-time and 
+            <br className="hidden xs:inline" />
             developing web projects as an independent
-            <br className="hidden min-[440px]:inline" /> software engineer.
+            <br className="hidden xs:inline" /> software engineer.
           </p>
           <br />
         </section> */}
@@ -33,16 +33,16 @@ export default async function Page() {
       <WhatsMakeMe skills={homeData.whatsmakeme} />
 
       <Projects projects={projects} />
-      <div className="mt-4 inline min-[992px]:ml-[49%]">
+      <div className="mt-4 inline lg:ml-[49%]">
         <section>
           <p className="description-text">
             To be honest, I&apos;m not really sure
-            <br className="hidden min-[440px]:inline" /> the purpose of this website is.
-            <br className="hidden min-[440px]:inline" /> If you dig a bit, maybe you&apos;ll find
-            <br className="hidden min-[440px]:inline" /> something useful — who knows? In the
-            <br className="hidden min-[440px]:inline" />
+            <br className="hidden xs:inline" /> the purpose of this website is.
+            <br className="hidden xs:inline" /> If you dig a bit, maybe you&apos;ll find
+            <br className="hidden xs:inline" /> something useful — who knows? In the
+            <br className="hidden xs:inline" />
             meantime, it&apos;s just a nice place to 
-            <br className="hidden min-[440px]:inline" /> feed my ego.
+            <br className="hidden xs:inline" /> feed my ego.
           </p>
           <br />
         </section>

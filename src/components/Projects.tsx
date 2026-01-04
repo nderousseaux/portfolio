@@ -50,7 +50,7 @@ export default function Projects() {
 
   return (
     <section className="flex">
-      <div className='w-full relative overflow-hidden max-[992px]:opacity-0 max-[992px]:max-h-0 max-[992px]:w-0'>
+      <div className='w-full relative overflow-hidden max-lg:opacity-0 max-lg:max-h-0 max-lg:w-0'>
         {projects[hoveredProject]?.imgUrl && (
           <Image
             src={`/${projects[hoveredProject].imgUrl}`}
@@ -61,7 +61,7 @@ export default function Projects() {
           />
         )}
       </div>
-      <div className="flex flex-col divide-y divide-gray-600 w-full min-[992px]:min-w-102/200 border-t border-gray-600">
+      <div className="flex flex-col divide-y divide-gray-600 w-full lg:min-w-[51%] border-t border-gray-600">
         {projects.map((project, index) => (
           <div 
             key={index}

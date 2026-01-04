@@ -35,35 +35,13 @@ children: React.ReactNode;
   return (
     <html lang="fr" className="scroll-smooth">
       <body className="
-      bg-black
-      antialiased
-      text-white font-mono
-
-      w-full
-      min-[1420px]:max-w-350
-      min-[1200px]:max-w-295
-      min-[992px]:max-w-255
-      max-w-192.5
-      mx-auto
-
-      min-[1420px]:text-[20px]
-      min-[1420px]:leading-7
-      
-      min-[750px]:text-[18px]
-      min-[750px]:leading-6
-
-      text-[16px]
-      leading-5.25
-      font-weight-[400]
-      tracking-tight
-      
-
-      min-[750px]:mt-7.75
-      mt-5.25
-      mb-5
-
-      min-[810px]:px-2.5
-      px-5
+        bg-black antialiased text-white font-mono
+        w-full mx-auto
+        max-w-192-5 lg:max-w-255 xl:max-w-295 2xl:max-w-350
+        text-[16px] leading-5-25 sm-md:text-[18px] sm-md:leading-6 2xl:text-[20px] 2xl:leading-7
+        font-normal tracking-tight
+        mt-5-25 sm-md:mt-7-75 mb-5
+        px-5 md:px-2-5
       ">
           <ResizeTransition />
           <PageReveal>

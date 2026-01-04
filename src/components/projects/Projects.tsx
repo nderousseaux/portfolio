@@ -25,7 +25,7 @@ function ProjectItem({ project }: { project: Project }) {
   return (
     <a 
       href={project.link || '#'}
-      className="py-4 flex justify-between items-start border-t border-black hover:!border-white transition-colors cursor-pointer"
+      className="py-4 flex justify-between items-start border-t border-black hover:border-white! transition-colors cursor-pointer"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -69,7 +69,7 @@ export default function Projects({ projects: initialProjects }: { projects: Proj
 
   return (
     <section className="flex">
-      <div className='w-full relative overflow-hidden max-[992px]:opacity-0 max-[992px]:max-h-0 max-[992px]:w-0'>
+      <div className='w-full relative overflow-hidden max-lg:opacity-0 max-lg:max-h-0 max-lg:w-0'>
         {projects[hoveredProject]?.imgUrl && (
           <GlitchImage
             src={`/${projects[hoveredProject].imgUrl}`}
@@ -92,7 +92,7 @@ export default function Projects({ projects: initialProjects }: { projects: Proj
           />
         )}
       </div>
-      <div className="flex flex-col w-full min-[992px]:min-w-102/200">
+      <div className="flex flex-col w-full lg:min-w-[51%]">
         {projects.map((project, index) => (
           <div 
             key={index}
@@ -101,7 +101,7 @@ export default function Projects({ projects: initialProjects }: { projects: Proj
             <ProjectItem project={project} />
           </div>
         ))}
-        <ScrambleLink href="#" className="py-4 text-center border-t border-black hover:!border-white transition-colors text-gray-400 hover:text-white text-base flex justify-center items-center">
+        <ScrambleLink href="#" className="py-4 text-center border-t border-black hover:border-white! transition-colors text-gray-400 hover:text-white text-base flex justify-center items-center">
           See more →
         </ScrambleLink>
       </div>
