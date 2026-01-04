@@ -38,6 +38,7 @@ export default function PageReveal({ children }: { children: React.ReactNode }) 
       );
 
       const textNodes: { node: Text; originalText: string; startIndex: number }[] = [];
+      const bordersSet = new Set<HTMLElement>(); // Utiliser un Set pour éviter les doublons
       const borders: { element: HTMLElement; startIndex: number }[] = [];
       const images: { element: HTMLElement; startIndex: number }[] = [];
       let currentIndex = 0;
@@ -68,14 +69,15 @@ export default function PageReveal({ children }: { children: React.ReactNode }) 
               styles.borderBottomWidth !== '0px' ||
               styles.borderLeftWidth !== '0px' ||
               styles.borderRightWidth !== '0px') {
-            // Vérifier si cet élément n'est pas déjà enregistré
-            if (!borders.find(b => b.element === parent)) {
+            // Ajouter au Set pour éviter les doublons
+            if (!bordersSet.has(parent)) {
+              bordersSet.add(parent);
               borders.push({
                 element: parent,
                 startIndex: currentIndex
               });
-              // Forcer les bordures en noir au début
-              parent.style.borderColor = 'black';
+              // Cacher les bordures au début
+              parent.style.borderColor = 'transparent';
             }
           }
           
@@ -90,6 +92,27 @@ export default function PageReveal({ children }: { children: React.ReactNode }) 
         currentIndex += originalText.length;
       }
 
+      // Collecter tous les éléments avec bordures (même sans texte)
+      const allElements = contentRef.current.querySelectorAll('*');
+      allElements.forEach((element) => {
+        const htmlElement = element as HTMLElement;
+        if (!bordersSet.has(htmlElement)) {
+          const styles = window.getComputedStyle(htmlElement);
+          if (styles.borderTopWidth !== '0px' || 
+              styles.borderBottomWidth !== '0px' ||
+              styles.borderLeftWidth !== '0px' ||
+              styles.borderRightWidth !== '0px') {
+            bordersSet.add(htmlElement);
+            borders.push({
+              element: htmlElement,
+              startIndex: currentIndex // Apparaîtra à la fin
+            });
+            htmlElement.style.borderColor = 'transparent';
+          }
+        }
+      });
+
+      // Collecter 
       // Collecter les images avec l'index de la section projets
       const allImgs = contentRef.current.querySelectorAll('img');
       allImgs.forEach((img) => {
