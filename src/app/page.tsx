@@ -10,25 +10,19 @@ export default async function Page() {
     <>
       <div className="inline lg:relative lg:-top-10 lg:left-0">
         <section className="max-w-full xs:max-w-content-xs sm-md:max-w-content-sm 2xl:max-w-content-lg">
+          {/* Comment br when an item is add to nav */}
+          <div className="hidden lg:block">
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+          </div> 
           <p className="description-text">
             {homeData.description}
           </p>
           <br />
         </section>
-        {/* <section>
-          <p className="description-text">
-            Hello, I&apos;m Nathanaël. I write code and
-            <br className="hidden xs:inline" /> manage cloud systems.
-            Currently working 
-            <br className="hidden xs:inline" /> as a cloud engineer at the University of
-            <br className="hidden xs:inline" /> Strasbourg, teaching part-time and 
-            <br className="hidden xs:inline" />
-            developing web projects as an independent
-            <br className="hidden xs:inline" /> software engineer.
-          </p>
-          <br />
-        </section> */}
-
       </div>
       <WhatsMakeMe skills={homeData.whatsmakeme} />
 

@@ -29,7 +29,7 @@ export default function Footer({ socialLinks }: FooterProps) {
       <footer className="w-full pt-4">
         <div className="flex flex-col md:flex-row justify-between items-center pt-4">
           <p className="text-gray-400 text-sm mb-2 md:mb-0">
-            Work with me ?
+            {/* Work with me ? */}
           </p>
           <div className="flex space-x-4">
             {socialLinks.map((link, index) => (

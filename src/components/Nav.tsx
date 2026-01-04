@@ -4,12 +4,18 @@ import GlitchImage from '@/components/effects/GlitchImage';
 import Link from 'next/link';
 import type { NavItem } from '@/types';
 
-interface NavProps {
-  navItems: NavItem[];
-  externalLinks: NavItem[];
-}
+const navItems: NavItem[] = [
+  // { label: 'Things I Made', href: '#', disabled: true },
+  // { label: 'Journey', href: '#', disabled: true },
+  // { label: 'Thoughts', href: '#', disabled: true },
+];
 
-export default function Nav({ navItems, externalLinks }: NavProps) {
+const externalLinks: NavItem[] = [
+  // { label: 'MRS', href: '#', disabled: true },
+  // { label: 'Zia', href: '#', disabled: true },
+];
+
+export default function Nav() {
 
   return (
     <nav className="w-full flex justify-between items-start">
