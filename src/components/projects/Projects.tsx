@@ -25,6 +25,8 @@ function ProjectItem({ project }: { project: Project }) {
   return (
     <a 
       href={project.link || '#'}
+      target="_blank"
+      rel="noopener noreferrer"
       className="py-4 flex justify-between items-start border-t border-black hover:border-white! transition-colors cursor-pointer"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -101,9 +103,10 @@ export default function Projects({ projects: initialProjects }: { projects: Proj
             <ProjectItem project={project} />
           </div>
         ))}
-        <ScrambleLink href="#" className="py-4 text-center border-t border-black hover:border-white! transition-colors text-gray-400 hover:text-white text-base flex justify-center items-center">
+        {/* <ScrambleLink href="#" className="py-4 text-center border-t border-black hover:border-white! transition-colors text-gray-400 hover:text-white text-base flex justify-center items-center">
           See more →
-        </ScrambleLink>
+        </ScrambleLink> */}
+        <br />
       </div>
     </section>
   );
