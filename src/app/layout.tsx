@@ -46,7 +46,8 @@ children: React.ReactNode;
           <ResizeTransition />
           <PageReveal>
             <div className="w-full flex flex-col gap-6">
-              <Nav navItems={navItems} externalLinks={externalLinks} />
+              {/* <Nav navItems={navItems} externalLinks={externalLinks} /> */}
+              <Nav />
               {children}
               <Footer socialLinks={socialLinks} />
             </div>

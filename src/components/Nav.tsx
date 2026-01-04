@@ -4,18 +4,12 @@ import GlitchImage from '@/components/effects/GlitchImage';
 import Link from 'next/link';
 import type { NavItem } from '@/types';
 
-const navItems: NavItem[] = [
-  // { label: 'Things I Made', href: '#', disabled: true },
-  // { label: 'Journey', href: '#', disabled: true },
-  // { label: 'Thoughts', href: '#', disabled: true },
-];
+interface NavProps {
+  navItems?: NavItem[];
+  externalLinks?: NavItem[];
+}
 
-const externalLinks: NavItem[] = [
-  // { label: 'MRS', href: '#', disabled: true },
-  // { label: 'Zia', href: '#', disabled: true },
-];
-
-export default function Nav() {
+export default function Nav({ navItems = [], externalLinks = [] }: NavProps) {
 
   return (
     <nav className="w-full flex justify-between items-start">
@@ -36,18 +30,26 @@ export default function Nav() {
         <p>
           <ScrambleLink href="/">(Home)</ScrambleLink>
         </p>
-        <br />
-        {navItems.map((item, index) => (
-          <p key={index} className={item.disabled ? 'line-through' : ''}>
-            <ScrambleLink href={item.href}>{item.label}</ScrambleLink>
-          </p>
-        ))}
-        <br />
-        {externalLinks.map((item, index) => (
-          <p key={index} className={item.disabled ? 'line-through' : ''}>
-            <ScrambleLink href={item.href}>{`${item.label} >`}</ScrambleLink>
-          </p>
-        ))}
+        {navItems.length > 0 && (
+          <>
+            <br />
+            {navItems.map((item, index) => (
+              <p key={index} className={item.disabled ? 'line-through' : ''}>
+                <ScrambleLink href={item.href}>{item.label}</ScrambleLink>
+              </p>
+            ))}
+          </>
+        )}
+        {externalLinks.length > 0 && (
+          <>
+            <br />
+            {externalLinks.map((item, index) => (
+              <p key={index} className={item.disabled ? 'line-through' : ''}>
+                <ScrambleLink href={item.href}>{`${item.label} >`}</ScrambleLink>
+              </p>
+            ))}
+          </>
+        )}
         <br />
       </div>
     </nav>
