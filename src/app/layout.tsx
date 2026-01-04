@@ -1,11 +1,11 @@
 import type { Viewport } from "next";
-import { metadata } from "@/../metadata";
 import "@/globals.css";
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import ResizeTransition from '@/utils/ResizeTransition';
 import PageReveal from '@/components/effects/PageReveal';
 import { getSocialLinks } from '@/services/socialsService';
+import { generateMetadata } from "@/../metadata";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -13,7 +13,7 @@ export const viewport: Viewport = {
   maximumScale: 1,
 };
 
-export { metadata };
+export { generateMetadata };
 
 export default async function RootLayout({
   children,

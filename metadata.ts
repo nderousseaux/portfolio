@@ -1,41 +1,46 @@
 import type { Metadata } from "next";
+import { getHomeData } from "@/services/homeService";
 
-export const metadata: Metadata = {
-  title: "Nathanaël Derousseaux",
-  description: "I write code and manage cloud systems. Currently working as a cloud engineer at the University of Strasbourg, teaching part-time and developing web projects as an independent software engineer.",
-  keywords: [
-    "Nathanaël Derousseaux",
-    "cloud engineer",
-    "web developer",
-    "full stack developer",
-    "software engineer",
-    "cloud computing",
-    "University of Strasbourg",
-    "teaching",
-    "Next.js",
-    "React",
-    "TypeScript",
-    "Tailwind CSS",
-    "web development",
-    "portfolio",
-    "freelance developer",
-    "independent developer",
-    "cloud systems",
-    "system administration",
-    "DevOps",
-    "mobile development",
-    "Strasbourg",
-    "France",
-  ],
-  authors: [{ name: "Nathanaël Derousseaux" }],
-  openGraph: {
+// Métadonnées statiques de base
+const staticKeywords = [
+  "Nathanaël Derousseaux",
+  "Next.js",
+  "React",
+  "TypeScript",
+  "Tailwind CSS",
+  "web development",
+  "portfolio",
+  "freelance developer",
+  "independent developer",
+  "mobile development",
+  "Strasbourg",
+  "France",
+];
+
+/**
+ * Génère les métadonnées de manière dynamique
+ * Charge la description et les intérêts depuis me.yaml
+ */
+export async function generateMetadata(): Promise<Metadata> {
+  const { description, whatsmakeme } = await getHomeData();
+  
+  // Combine les keywords statiques avec les intérêts dynamiques
+  const keywords = [...staticKeywords, ...whatsmakeme];
+  
+  return {
     title: "Nathanaël Derousseaux",
-    description: "I write code and manage cloud systems. Currently working as a cloud engineer at the University of Strasbourg, teaching part-time and developing web projects as an independent software engineer.",
-    type: "website",
-    locale: "fr_FR",
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
-};
+    description,
+    keywords,
+    authors: [{ name: "Nathanaël Derousseaux" }],
+    openGraph: {
+      title: "Nathanaël Derousseaux",
+      description,
+      type: "website",
+      locale: "fr_FR",
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
