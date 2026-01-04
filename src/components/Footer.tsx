@@ -1,18 +1,16 @@
 'use client';
-import { getSocialLinks } from '@/services/socialsService';
 import ScrambleLink from '@/components/effects/ScrambleLink';
 import PGPModal from '@/components/PGPModal';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import type { SocialLink } from '@/types';
 
-export default function Footer() {
-  const [socialLinks, setSocialLinks] = useState<SocialLink[]>([]);
+interface FooterProps {
+  socialLinks: SocialLink[];
+}
+
+export default function Footer({ socialLinks }: FooterProps) {
   const [isPGPModalOpen, setIsPGPModalOpen] = useState(false);
   const [pgpKey, setPgpKey] = useState('');
-
-  useEffect(() => {
-    getSocialLinks().then(setSocialLinks);
-  }, []);
 
   const handleCloseModal = useCallback(() => {
     setIsPGPModalOpen(false);

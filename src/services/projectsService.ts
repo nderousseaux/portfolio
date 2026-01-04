@@ -1,30 +1,25 @@
 import type { Project } from '@/types';
-import { projects } from '@/data/projects';
+import { promises as fs } from 'fs';
+import path from 'path';
+import yaml from 'js-yaml';
 
 /**
  * Service pour récupérer la liste des projets
- * 
- * À terme, cette fonction effectuera un appel API externe
- * Pour l'instant, elle retourne les données locales
+ * Charge les données depuis le fichier YAML projects.yaml
  */
 export async function getProjects(): Promise<Project[]> {
-  // TODO: Remplacer par un appel API
-  // const response = await fetch('/api/projects');
-  // return response.json();
+  const yamlPath = path.join(process.cwd(), 'src', 'data', 'projects.yaml');
+  const fileContents = await fs.readFile(yamlPath, 'utf8');
+  const projects = yaml.load(fileContents) as Project[];
   
   return projects;
 }
 
 /**
  * Service pour récupérer un projet par son titre
- * 
- * À terme, cette fonction effectuera un appel API externe
- * Pour l'instant, elle filtre les données locales
+ * Charge les données depuis le fichier YAML et filtre par titre
  */
 export async function getProjectByTitle(title: string): Promise<Project | undefined> {
-  // TODO: Remplacer par un appel API
-  // const response = await fetch(`/api/projects/${encodeURIComponent(title)}`);
-  // return response.json();
-  
+  const projects = await getProjects();
   return projects.find(project => project.title === title);
 }

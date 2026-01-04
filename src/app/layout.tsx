@@ -5,6 +5,7 @@ import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import ResizeTransition from '@/utils/ResizeTransition';
 import PageReveal from '@/components/effects/PageReveal';
+import { getSocialLinks } from '@/services/socialsService';
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -14,11 +15,23 @@ export const viewport: Viewport = {
 
 export { metadata };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
 children: React.ReactNode;
 }>) {
+  const navItems = [
+    { label: 'Things I Made', href: '#', disabled: true },
+    { label: 'Journey', href: '#', disabled: true },
+    { label: 'Thoughts', href: '#', disabled: true },
+  ];
+  
+  const externalLinks = [
+    { label: 'MRS', href: '#', disabled: true },
+    { label: 'Zia', href: '#', disabled: true },
+  ];
+  
+  const socialLinks = await getSocialLinks();
   return (
     <html lang="fr" className="scroll-smooth">
       <body className="
@@ -55,9 +68,9 @@ children: React.ReactNode;
           <ResizeTransition />
           <PageReveal>
             <div className="w-full flex flex-col gap-6">
-              <Nav />
+              <Nav navItems={navItems} externalLinks={externalLinks} />
               {children}
-              <Footer />
+              <Footer socialLinks={socialLinks} />
             </div>
           </PageReveal>
       </body>

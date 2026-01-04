@@ -9,7 +9,6 @@ export interface Project {
 export interface HomeData {
   description: string;
   whatsmakeme: string[];
-  textend: string;
 }
 
 export interface SocialLink {

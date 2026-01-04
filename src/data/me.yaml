@@ -1,0 +1,23 @@
+name: Nathanaël
+lastname: Derousseaux
+age: 25
+
+socials:
+  email: n.derousseaux@icloud.com
+  website: https://nldx.sh
+  github: https://github.com/nderousseaux
+  leetcode: https://leetcode.com/nderousseaux
+  linkedin: https://www.linkedin.com/in/nderousseaux
+
+short_pres: >
+  Hello, I'm Nathnaël. I write code and manage cloud systems. Currently working as a cloud engineer at the University of Strasbourg, teaching part-time and developing web projects as an independent software engineer.
+
+interests:
+  - Cloud System Engineering
+  - Web Development
+  - Teaching
+  - Research & Science Enthusiast
+  - Tech Explorer
+  - Perpetual Side-Projects
+  - Sports Lover
+  - Avid Traveler

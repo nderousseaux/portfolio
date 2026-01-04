@@ -1,16 +1,24 @@
 import type { HomeData } from '@/types';
-import { homeData } from '@/data/home';
+import { promises as fs } from 'fs';
+import path from 'path';
+import yaml from 'js-yaml';
+
+interface MeYaml {
+  short_pres: string;
+  interests: string[];
+}
 
 /**
  * Service pour récupérer les données de la page d'accueil
- * 
- * À terme, cette fonction effectuera un appel API externe
- * Pour l'instant, elle retourne les données locales
+ * Charge les données depuis le fichier YAML me.yaml
  */
 export async function getHomeData(): Promise<HomeData> {
-  // TODO: Remplacer par un appel API
-  // const response = await fetch('/api/home');
-  // return response.json();
+  const yamlPath = path.join(process.cwd(), 'src', 'data', 'me.yaml');
+  const fileContents = await fs.readFile(yamlPath, 'utf8');
+  const data = yaml.load(fileContents) as MeYaml;
   
-  return homeData;
+  return {
+    description: data.short_pres,
+    whatsmakeme: data.interests,
+  };
 }

@@ -1,5 +1,4 @@
 'use client';
-import { getProjects } from '@/services/projectsService';
 import { useState, useEffect } from 'react';
 import type { Project } from '@/types';
 import ScrambleLink from '@/components/effects/ScrambleLink';
@@ -41,23 +40,18 @@ function ProjectItem({ project }: { project: Project }) {
   );
 }
 
-export default function Projects() {
-  const [projects, setProjects] = useState<Project[]>([]);
+export default function Projects({ projects: initialProjects }: { projects: Project[] }) {
+  const [projects] = useState<Project[]>(initialProjects);
   const [hoveredProject, setHoveredProject] = useState<number>(0);
   const [previousProject, setPreviousProject] = useState<number>(0);
   const [triggerGlitch, setTriggerGlitch] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
-    getProjects().then((data) => {
-      setProjects(data);
-      setIsLoaded(true);
-    });
   }, []);
 
-  if (!isMounted || !isLoaded) {
+  if (!isMounted) {
     return null;
   }
 

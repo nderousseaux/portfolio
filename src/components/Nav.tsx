@@ -1,18 +1,15 @@
 'use client';
-import { getNavItems, getExternalLinks } from '@/services/navigationService';
 import ScrambleLink from '@/components/effects/ScrambleLink';
 import GlitchImage from '@/components/effects/GlitchImage';
-import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import type { NavItem } from '@/types';
 
-export default function Nav() {
-  const [navItems, setNavItems] = useState<any[]>([]);
-  const [externalLinks, setExternalLinks] = useState<any[]>([]);
+interface NavProps {
+  navItems: NavItem[];
+  externalLinks: NavItem[];
+}
 
-  useEffect(() => {
-    getNavItems().then(setNavItems);
-    getExternalLinks().then(setExternalLinks);
-  }, []);
+export default function Nav({ navItems, externalLinks }: NavProps) {
 
   return (
     <nav className="w-full flex justify-between items-start">
