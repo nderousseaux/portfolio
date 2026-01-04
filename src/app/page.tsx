@@ -1,5 +1,4 @@
-import Projects from '@/components/projects/Projects';
-import WhatsMakeMe from '@/components/home/WhatsMakeMe';
+import Projects from '@/app/Projects';
 import { getHomeData } from '@/services/homeService';
 import { getProjects } from '@/services/projectsService';
 
@@ -24,7 +23,18 @@ export default async function Page() {
           <br />
         </section>
       </div>
-      <WhatsMakeMe skills={homeData.whatsmakeme} />
+      <div 
+        className="inline lg:absolute lg:top-8 lg:right-0 lg:w-[51%] lg:pointer-events-none"
+      >
+        <section className="flex flex-col items-start">
+          <h2 className="lg:pointer-events-auto">(What&#39;s make me)</h2>
+          <br />
+          {homeData.whatsmakeme.map((skill, index) => (
+            <p key={index} className="lg:pointer-events-auto">{skill}</p>
+          ))}
+          <br />
+        </section>
+      </div>
 
       <Projects projects={projects} />
       <div className="mt-4 inline lg:ml-[49%]">

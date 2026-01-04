@@ -1,9 +1,9 @@
 import type { Viewport } from "next";
 import "@/globals.css";
-import Nav from '@/components/Nav';
-import Footer from '@/components/Footer';
+import Nav from '@/app/Nav';
+import Footer from '@/app/Footer';
 import ResizeTransition from '@/utils/ResizeTransition';
-import PageReveal from '@/components/effects/PageReveal';
+import PageReveal from '@/app/PageReveal';
 import { getSocialLinks } from '@/services/socialsService';
 import { generateMetadata } from "@/../metadata";
 

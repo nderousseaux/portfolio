@@ -2,8 +2,8 @@
 
 ```
 src/
-  app/         → routing uniquement
-  components/  → UI générique (zéro métier)
+  app/         → routing et composants non réutilisés
+  components/  → UI générique, avec composants réutilisables (zéro métier)
   features/    → logique métier par domaine
   hooks/       → hooks React personnalisés
   services/    → services techniques réutilisables
