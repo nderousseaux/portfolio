@@ -13,7 +13,7 @@ export default function Nav({ navItems = [], externalLinks = [] }: NavProps) {
 
   return (
     <nav className="w-full flex justify-between items-start">
-      <Link href="/">
+      <a href="/" style={{ display: 'block', lineHeight: 0 }}>
         <GlitchImage
           src="/logo.png"
           alt="Logo"
@@ -25,7 +25,7 @@ export default function Nav({ navItems = [], externalLinks = [] }: NavProps) {
             manualIntensity: 'subtle',
           }}
         />
-      </Link>
+      </a>
       <div className="text-end">
         <p>
           <ScrambleLink href="/">(Home)</ScrambleLink>
