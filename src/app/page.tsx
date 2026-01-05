@@ -1,6 +1,7 @@
 import Projects from '@/app/Projects';
 import { getHomeData } from '@/services/homeService';
 import { getProjects } from '@/services/projectsService';
+import LocationTooltip from '@/components/LocationTooltip';
 
 export default async function Page() {
   const homeData = await getHomeData();
@@ -8,7 +9,7 @@ export default async function Page() {
   return (
     <>
       <div className="inline lg:relative lg:-top-10 lg:left-0">
-        <section className="max-w-full xs:max-w-content-xs sm-md:max-w-content-sm 2xl:max-w-content-lg">
+        <section className="">
           {/* Comment br when an item is add to nav */}
           <div className="hidden lg:block">
             <br />
@@ -17,9 +18,14 @@ export default async function Page() {
             <br />
             <br />
           </div> 
-          <p className="description-text">
-            {homeData.description}
-          </p>
+          <div className="max-w-full xs:max-w-content-xs sm-md:max-w-content-sm 2xl:max-w-content-lg">
+            <p className="description-text">
+              {homeData.description}
+            </p>
+          </div>
+          <span className="text-sm text-gray-500 block pt-3 text-right md:text-left">
+            <LocationTooltip location={homeData.location} />
+          </span>
           <br />
         </section>
       </div>

@@ -62,13 +62,13 @@ export default function Footer({ socialLinks }: FooterProps) {
   return (
     <>
       <footer className="w-full pt-4">
-        <div className="flex flex-col md:flex-row justify-between items-center pt-4">
-          <p className="text-gray-400 text-sm mb-2 md:mb-0">
+        <div className="flex flex-col md:flex-row justify-end items-center pt-4">
+          {/* <p className="text-gray-400 text-sm mb-2 md:mb-0">
             <ScrambleLink>
               Work with me ?
             </ScrambleLink>
           </p>
-          <div className="w-16 border-t border-gray-600 mb-2 md:hidden"></div>
+          <div className="w-16 border-t border-gray-600 mb-2 md:hidden"></div> */}
           <div className="flex space-x-4">
             {socialLinks.map((link, index) => (
               <ScrambleLink
