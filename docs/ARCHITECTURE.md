@@ -2,28 +2,29 @@
 
 ```
 src/
-  app/         → routing et composants non réutilisés
-  components/  → UI générique, avec composants réutilisables (zéro métier)
-  features/    → logique métier par domaine
-  hooks/       → hooks React personnalisés
-  services/    → services techniques réutilisables
-  styles/      → styles globaux
-  types/       → types partagés
+├── app/          # Next.js App Router pages, layouts, and page-specific components
+├── components/   # Reusable UI components (generic, no business logic)
+├── hooks/        # Custom React hooks
+├── services/     # Technical services (data loading, API calls)
+├── types/        # Shared TypeScript types
+├── data/         # YAML data files
+├── utils/        # Utility functions and components
+└── globals.css   # Global styles and Tailwind configuration
 ```
 
 ## `features/` vs `services/`
 
-**features/** = métier (auth, user, billing)
-- Connaît les concepts business
-- Ex : `auth/login.ts`, `user/user.schema.ts`
+**features/** = business logic (auth, user, billing)
+- Contains business concepts
+- Ex: `auth/login.ts`, `user/user.schema.ts`
 
-**services/** = technique (api, db, config)
-- Aucune notion métier, réutilisable
-- Ex : `api.service.ts`, `db.service.ts`
+**services/** = technical layer (api, db, config)
+- No business knowledge, reusable
+- Ex: `api.service.ts`, `db.service.ts`
 
-**Exemple** :
-- `services/api.service.ts` → client HTTP générique
-- `features/auth/login.ts` → appelle `services/api` avec logique auth
+**Example**:
+- `services/api.service.ts` → generic HTTP client
+- `features/auth/login.ts` → calls `services/api` with auth logic
 
 ## Imports
 
